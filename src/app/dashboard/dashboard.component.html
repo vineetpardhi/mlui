@@ -1,1 +1,90 @@
-<h1>Dashboard</h1>
+<h1 align="center">Dashboard</h1>
+
+
+<mat-grid-list cols="2">
+
+<mat-grid-tile>
+<div class="container" >
+    <div class="center">
+        <div class="title">
+            <h1>Drop file to upload</h1>
+        </div>
+
+        <div class="dropzone">
+            <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
+            <input type="file" class="upload-input" />
+        </div>
+
+        <button type="button" class="btn" name="uploadbutton">Upload file</button>
+
+    </div>
+</div>
+<!-- original pen: https://codepen.io/roydigerhund/pen/ZQdbeN  -->
+
+<!-- NO JS ADDED YET -->
+
+</mat-grid-tile>
+
+
+
+
+
+
+
+
+
+
+
+<mat-grid-tile>
+
+<div>
+    <mat-card>Training
+        <mat-card-content>
+            <mat-form-field appearance="none">
+                <mat-card class="tmo">
+                <mat-select placeholder="Training Model">
+                  <mat-option *ngFor="let food of foods" [value]="food.value">
+                     {{food.viewValue}}
+                   </mat-option>
+                 </mat-select>
+                 </mat-card>
+               </mat-form-field>
+                      
+        </mat-card-content>
+        <mat-divider></mat-divider>
+        <mat-card-content id="advn">
+            <button  mat-raised-button color="primary" class="waves-light"  (click)="test.toggle()" mdbWavesEffect>
+               Add parameters
+              </button>
+              
+              <div class="cpl" mdbCollapse #test="bs-collapse">
+                <mat-list role="list">
+                    <mat-list-item role="listitem">Epochs 
+                        <mat-form-field class="example-full-width" style="margin-left:10px;">
+                            <input type="number"  placeholder="100" min="1" matInput >
+                        </mat-form-field>
+                    </mat-list-item>
+                    <br>
+                    <mat-list-item role="listitem">Learning Rate
+                        <mat-form-field class="example-full-width" style="margin-left:10px;">
+                            <input  type="number" placeholder="0.02" min="1" matInput >
+                        </mat-form-field>
+                    </mat-list-item>
+                    <br>
+                    <mat-list-item role="listitem">Batch-size
+                        <mat-form-field class="example-full-width" style="margin-left:10px;">
+                            <input type="number"  min="1" matInput placeholder="64">
+                        </mat-form-field>
+                    </mat-list-item>
+                    <br>
+                  </mat-list>
+              </div>
+        </mat-card-content>
+    </mat-card>
+
+   
+</div>
+
+</mat-grid-tile>
+
+</mat-grid-list>
