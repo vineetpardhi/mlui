@@ -1,27 +1,64 @@
-<h1 align="center">Dashboard</h1>
+<h1 align="center">Train Model</h1>
 
 
 <mat-grid-list cols="2">
 
 <mat-grid-tile>
-<div class="container" >
-    <div class="center">
-        <div class="title">
-            <h1>Drop file to upload</h1>
+
+
+        <mat-card>
+                <mat-card-header>
+                   <mat-card-title style="font-size: 20px;cursor: pointer;" (click)="collapse1()">Upload Dataset File &nbsp; <i class="material-icons">
+                        keyboard_arrow_down
+                        </i></mat-card-title>
+                </mat-card-header>
+              
+                <mat-card-content *ngIf="!collapsed1">
+                 
+            <div class="container" >
+            <div class="center">
+                <div class="title">
+                    <h1>Drop file to upload</h1>
+                </div>
+    
+    
+            <div class="dropzone">
+                <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
+                <input type="file" class="upload-input" (change)="showPreview($event)" />
+            </div>
+    
+            <button type="button" class="btn" name="uploadbutton"  (click)="save()">Upload file</button>
+          
         </div>
-
-        <div class="dropzone">
-            <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
-            <input type="file" class="upload-input" (change)="showPreview($event)" />
-        </div>
-
-        <button type="button" class="btn" name="uploadbutton"  (click)="save()">Upload file</button>
-
+        
     </div>
-</div>
-<!-- original pen: https://codepen.io/roydigerhund/pen/ZQdbeN  -->
+                </mat-card-content>
+                <mat-card-actions>
+                </mat-card-actions>
+              <br>
+              <mat-divider></mat-divider>
+              <br>
+              <br>
+                <mat-card-header>
+                   <mat-card-title style="font-size: 20px;cursor: pointer;" (click)="collapse2()">Dataset from Kaggle &nbsp; <i class="material-icons">
+                        keyboard_arrow_down
+                        </i></mat-card-title>
+                </mat-card-header>
+              
+                <mat-card-content *ngIf="!collapsed2">
+                        <form>
+                                <input type="text" id="author" class="fadeIn second" name="author" placeholder="Authorname" required>
+                                <input type="text" id="dataset" class="fadeIn third" name="dataset" placeholder="Dataset Name" required>
+                                <br>
+                                <br>
+                                <br>
+                                <input type="submit" id="post" class="fadeIn fourth" (click)="set($event)" value="Submit">
+                              </form>
+                </mat-card-content>
+                <mat-card-actions>
+                </mat-card-actions>
+              </mat-card>
 
-<!-- NO JS ADDED YET -->
 
 </mat-grid-tile>
 

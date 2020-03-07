@@ -19,12 +19,40 @@ interface Food {
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  panelOpenState = false;
+ 
+  panelOpenState =false;
+  collapsed1=true;
+  collapsed2=true;
+  collapse1(){
+      if(this.collapsed1==true){
+          this.collapsed1=false;
+      }
+      else{
+          this.collapsed1=true;
+      }
+  }
+
+  collapse2(){
+    if(this.collapsed2==true){
+        this.collapsed2=false;
+    }
+    else{
+        this.collapsed2=true;
+    }
+}
+
+set(e){
+    e.preventDefault();
+    var author=((document.getElementById('author') as HTMLInputElement).value);
+    var dataset=((document.getElementById('dataset') as HTMLInputElement).value);
+    console.log(author);
+    console.log(dataset);
+
+}
 
   foods: Food[] = [
-    {value: 'transfer', viewValue: 'T'},
-    {value: 'Image Class', viewValue: 'I'},
-    {value: 'dal na khud', viewValue: 'T'}
+    {value: 'transfer', viewValue: 'Resnet'},
+    {value: 'Architecture', viewValue: 'VGG'},
   ];
   constructor() { }
 
