@@ -8,7 +8,6 @@ import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
 // For MDB Angular Free
 import { CollapseModule, WavesModule, DropdownModule} from 'angular-bootstrap-md';
-import {MatGridListModule} from '@angular/material/grid-list';
 
 interface Food {
   value: string;
@@ -23,8 +22,9 @@ export class DashboardComponent implements OnInit {
   panelOpenState = false;
 
   foods: Food[] = [
-    {value: 'trans', viewValue: 'Transfer'},
-    {value: 'arch', viewValue: 'Architecture'},
+    {value: 'transfer', viewValue: 'T'},
+    {value: 'Image Class', viewValue: 'I'},
+    {value: 'dal na khud', viewValue: 'T'}
   ];
   constructor() { }
 
