@@ -8,12 +8,15 @@ import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
 import {Requestservice} from '../service/request.service';
 // For MDB Angular Free
+import { AngularFireStorage } from '@angular/fire/storage';
 import { CollapseModule, WavesModule, DropdownModule} from 'angular-bootstrap-md';
 
 interface Food {
   value: string;
   viewValue: string;
 }
+
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -21,6 +24,8 @@ interface Food {
 })
 export class DashboardComponent implements OnInit {
  
+
+    private event;
     selected="Resnet";
   panelOpenState =false;
   collapsed1=true;
@@ -92,11 +97,24 @@ trainmodel(){
 
   
 
-  constructor(private demo_service:Requestservice) { }
+  constructor(private demo_service:Requestservice,private storage:AngularFireStorage) { }
 
   ngOnInit() {
       
       
   }
+
+
+  
+  saveEvent(event){
+    this.event=event;
+}
+uploadFile() {
+  const file = this.event.target.files[0];
+  const filePath = '/images/ml_dataset/';
+  const task = this.storage.upload(filePath, file);
+
+}
+
 
 }

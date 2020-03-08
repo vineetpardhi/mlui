@@ -16,6 +16,12 @@ import { MatList, MatListModule } from '@angular/material/list';
 import { MatInputModule } from '@angular/material/input';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { HttpClientModule }    from '@angular/common/http';
+import { FileSelectDirective } from 'ng2-file-upload';
+import { FormsModule } from '@angular/forms';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
+
+import {AngularFireStorageModule, StorageBucket} from '@angular/fire/storage';
 
 
 @NgModule({
@@ -40,10 +46,13 @@ import { HttpClientModule }    from '@angular/common/http';
     MatInputModule,
     DropdownModule,
     MatGridListModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
+    
 
   ],
-  providers: [],
+  providers: [{provide: StorageBucket, useValue: 'gs://mlui-42774.appspot.com'}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

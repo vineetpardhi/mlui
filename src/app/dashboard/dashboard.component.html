@@ -26,10 +26,10 @@
     
             <div class="dropzone">
                 <img src="http://100dayscss.com/codepen/upload.svg" class="upload-icon" />
-                <input type="file" class="upload-input" (change)="showPreview($event)" />
+                <input type="file" class="upload-input" (change)="saveEvent($event)" />
             </div>
     
-            <button type="button" class="btn" name="uploadbutton"  (click)="save()">Upload file</button>
+            <button type="button" class="btn" name="uploadbutton"  (click)="uploadFile()">Upload file</button>
           
         </div>
         
