@@ -1,4 +1,6 @@
-<h1 align="center">Train Model</h1>
+<div class="head">
+        <p>Let's Train Model Together</p>
+      </div>
 
 
 <mat-grid-list cols="2">
@@ -79,10 +81,9 @@
         <mat-card-content>
             <mat-form-field appearance="none">
                 <mat-card class="tmo">
-                <mat-select placeholder="Training Model">
-                  <mat-option *ngFor="let food of foods" [value]="food.value">
-                     {{food.viewValue}}
-                   </mat-option>
+                <mat-select placeholder="Training Model"  [(value)]="selected">
+                  <mat-option value="Resnet">Resnet</mat-option>
+                  <mat-option value="VGG">VGG</mat-option>
                  </mat-select>
                  </mat-card>
                </mat-form-field>
@@ -98,19 +99,19 @@
                 <mat-list role="list">
                     <mat-list-item role="listitem">Epochs 
                         <mat-form-field class="example-full-width" style="margin-left:10px;">
-                            <input type="number"  placeholder="100" min="1" matInput >
+                            <input type="number"  placeholder="100" min="1" matInput id="epoch">
                         </mat-form-field>
                     </mat-list-item>
                     <br>
                     <mat-list-item role="listitem">Learning Rate
                         <mat-form-field class="example-full-width" style="margin-left:10px;">
-                            <input  type="number" placeholder="0.02" min="1" matInput >
+                            <input  type="number" placeholder="0.02" min="1" matInput id="lr">
                         </mat-form-field>
                     </mat-list-item>
                     <br>
                     <mat-list-item role="listitem">Batch-size
                         <mat-form-field class="example-full-width" style="margin-left:10px;">
-                            <input type="number"  min="1" matInput placeholder="64">
+                            <input type="number"  min="1" matInput placeholder="64" id="bs">
                         </mat-form-field>
                     </mat-list-item>
                     <br>
@@ -125,3 +126,18 @@
 </mat-grid-tile>
 
 </mat-grid-list>
+
+
+
+<br>
+<br>
+<br>
+
+<button (click)="trainmodel()">Train Model</button>
+
+<br>
+<br>
+<br>
+<br>
+
+<button (click)="predmodel()">Predict Model</button>

@@ -6,6 +6,7 @@ import {MatExpansionModule} from '@angular/material/expansion';
 import {MatButtonModule} from '@angular/material/button';
 import {MatListModule} from '@angular/material/list';
 import {MatInputModule} from '@angular/material/input';
+import {Requestservice} from '../service/request.service';
 // For MDB Angular Free
 import { CollapseModule, WavesModule, DropdownModule} from 'angular-bootstrap-md';
 
@@ -20,9 +21,13 @@ interface Food {
 })
 export class DashboardComponent implements OnInit {
  
+    selected="Resnet";
   panelOpenState =false;
   collapsed1=true;
   collapsed2=true;
+
+
+
   collapse1(){
       if(this.collapsed1==true){
           this.collapsed1=false;
@@ -41,22 +46,57 @@ export class DashboardComponent implements OnInit {
     }
 }
 
+
+
+
+sett(event){
+console.log("HERE");
+console.log(event);
+}
+
 set(e){
     e.preventDefault();
     var author=((document.getElementById('author') as HTMLInputElement).value);
     var dataset=((document.getElementById('dataset') as HTMLInputElement).value);
+    //var model=((document.getElementById('clientValue') as HTMLInputElement).value);
+    var epoch=((document.getElementById('epoch') as HTMLInputElement).value);
+    var lr=((document.getElementById('lr') as HTMLInputElement).value);
+    var bs=((document.getElementById('bs') as HTMLInputElement).value);
+
     console.log(author);
     console.log(dataset);
+    //console.log(model);
+    console.log(epoch);
+    console.log(lr);
+    console.log(bs);
 
+    this.demo_service.postData(epoch,lr,bs).subscribe((res)=>
+      {
+          console.log(JSON.stringify(res));
+      })
+
+      
 }
 
-  foods: Food[] = [
-    {value: 'transfer', viewValue: 'Resnet'},
-    {value: 'Architecture', viewValue: 'VGG'},
-  ];
-  constructor() { }
+trainmodel(){
+    var epoch=((document.getElementById('epoch') as HTMLInputElement).value);
+    var lr=((document.getElementById('lr') as HTMLInputElement).value);
+    var bs=((document.getElementById('bs') as HTMLInputElement).value);
+
+    this.demo_service.train(epoch,lr,bs).subscribe((res)=>{
+        console.log(JSON.stringify(res));
+    })
+}
+
+  
+
+  
+
+  constructor(private demo_service:Requestservice) { }
 
   ngOnInit() {
+      
+      
   }
 
 }
